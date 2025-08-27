@@ -1,0 +1,141 @@
+/* ======== Theme & Reset ======== */
+:root{
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #0b1220;
+  --muted: #64748b;
+  --line: #e6e8ee;
+  --brand: #2663ff;
+  --brand-weak: #7aa2ff;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(15,23,42,.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--text); background:var(--bg);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: url('../images/pexels-souvenirpixels-1571442.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ======== Header (通用) ======== */
+header.Navigate-bar{
+  position: sticky; top: 0; z-index: 10;
+  background: #0b1220; color:#fff; box-shadow: 0 1px 0 rgba(255,255,255,.06);
+}
+header .Logo{display:inline-block; padding:16px 20px; color:#fff; text-decoration:none; font-weight:800}
+header .nav{float:right; padding:12px 16px}
+header .nav a{
+  color:#b6c2ff; text-decoration:none; margin-left:8px; padding:8px 10px; border-radius:8px;
+}
+header .nav a:hover, header .nav a.active{background:rgba(255,255,255,.08); color:#fff}
+
+/* ======== Layout ======== */
+.container{max-width:1100px; margin:0 auto; padding:24px 20px}
+.empty{color:var(--muted); text-align:center; margin:40px 0}
+
+/* ======== Controls ======== */
+/* .toolbar{
+  max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+} */
+#searchInput{
+  padding:15px; border:1px solid var(--line); border-radius:10px; background:#fff; outline:none;
+  transition: box-shadow .15s, border-color .15s;
+}
+#searchInput:focus{border-color:var(--brand-weak); box-shadow:0 0 0 3px rgba(122,162,255,.25)}
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:10px 14px; border-radius:10px; border:1px solid transparent;
+  cursor:pointer; text-decoration:none; font-weight:600; box-shadow:var(--shadow);
+}
+.btn.primary{background:var(--brand); color:#fff}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.danger{background:#fff; color:var(--danger); border-color:#fecaca}
+.btn.danger:hover{background:#fff5f5}
+.btn:active{transform:translateY(1px)}
+
+/* ======== List Cards ======== */
+.list{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+.card{
+  display:grid; grid-template-columns: 1fr auto; align-items:flex-start; gap:12px;
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px;
+  box-shadow:var(--shadow); text-decoration:none; color:inherit;
+  transition: box-shadow .15s, transform .06s;
+}
+.card:hover{box-shadow:0 6px 12px rgba(15,23,42,.08); transform: translateY(-5px)}
+.card-title{margin:0 0 6px; font-size:1.05rem; font-weight:800}
+.meta{color:var(--muted); font-size:.95rem; margin-bottom:6px}
+.excerpt{margin:0; color:#1f2937}
+.card-actions .btn{padding:8px 10px}
+
+/* ======== Responsive ======== */
+@media (max-width: 900px){
+  .list{grid-template-columns: 1fr}
+  .toolbar{grid-template-columns: 1fr; gap:10px}
+}
+@media (max-width: 600px){
+  .btn{width:100%}
+}
+
+.page-title {
+  text-align: center;   /* 居中 */
+  font-size: 2rem;      /* 比原来大一点 */
+  margin: 20px 0;       /* 上下留白 */
+  font-weight: 700;     /* 粗体，标题感更强 */
+}
+
+.nav a[aria-current="page"] {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+/* ==== Match FoodNav search-section look ==== */
+.search-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  width: 70%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+/* 让“Blog List”标题风格保持清晰（你原本已有 .page-title，可继续使用） */
+.search-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+
