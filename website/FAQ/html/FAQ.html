@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FAQ - TasteMyWay</title>
+
+    <!-- Your existing styles -->
+    <link rel="stylesheet" href="../css/FAQ.css" />
+    <link rel="stylesheet" href="../../mainpage/css/logo.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Quicksand:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <img src="../../mainpage/images/logo.png" alt="TasteMyWay Logo" />
+            <h2><span>TasteMyWay</span></h2>
+        </div>
+        <nav class="site-nav">
+            <a href="../../mainpage/html/index.html">Main</a>
+            <a href="../../FoodsNav/html/foodnav.html">Food navigation</a>
+            <a href="../../FoodDetail/html/food.html">Foods Details</a>
+            <a href="../../About/About_Us.html">About us</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="faq-hero">
+            <h1>❓ Frequently Asked Questions</h1>
+            <p>Find answers to your questions about exploring Malaysia's culinary treasures</p>
+        </section>
+
+        <!-- Search -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for answers..." id="searchInput" />
+            <div class="search-icon">🔍</div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="category-tabs">
+            <button class="tab-button active" data-category="general">🏠 General</button>
+            <button class="tab-button" data-category="navigation">🧭 Navigation</button>
+            <button class="tab-button" data-category="food">🍜 Food</button>
+            <button class="tab-button" data-category="bloggers">✍️ Bloggers</button>
+        </div>
+
+        <!-- FAQ content (trimmed to essentials; keep/add as you like) -->
+        <div class="faq-content">
+            <div class="category-section active" id="general">
+                <div class="faq-item">
+                    <button class="faq-question">What is TasteMyWay? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>TasteMyWay is your guide to Malaysia’s food culture—discover dishes, places, and stories by
+                            state.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Is the site mobile-friendly? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Yes. All sections are responsive for phones, tablets, and desktops.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" id="navigation">
+                <div class="faq-item">
+                    <button class="faq-question">How do I navigate sections? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Use the top bar links and the “Explore Food Polls” button below.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" id="food">
+                <div class="faq-item">
+                    <button class="faq-question">Do you show ingredients? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Food detail pages list key ingredients and cultural background.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" id="bloggers">
+                <div class="faq-item">
+                    <button class="faq-question">Can I contribute? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Yes—send us photos, tips, or stories via the Contact page.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults">
+                <div class="no-results-icon">🔍</div>
+                <h3>No results found</h3>
+                <p>Try different keywords or browse categories above</p>
+            </div>
+
+            <!-- Help Section -->
+            <section class="help-section">
+                <h3>Still need help?</h3>
+                <p>Our team is here to help.</p>
+                <a href="contact_us.html" class="help-button">Contact Us</a>
+            </section>
+        </div>
+
+        <!-- CTA -->
+        <div class="faq-container">
+            <div class="cta-section">
+                <div class="food-icons">
+                    <div class="food-icon">🥑</div>
+                    <div class="food-icon">🍓</div>
+                    <div class="food-icon">🥕</div>
+                    <div class="food-icon">🌽</div>
+                </div>
+                <h2>Ready to Make Your Voice Heard?</h2>
+                <p>Vote in our state food battles below.</p>
+                <a href="#state-polls" class="cta-button">Explore Food Polls Now →</a>
+            </div>
+        </div>
+
+        <!-- Street Food Video (between CTA and polls) -->
+        <section id="intro-video" class="intro-video" aria-label="Street food video">
+            <div class="video-frame">
+                <video id="streetVideo" autoplay muted loop playsinline preload="metadata"alt="streetfood.mp4"
+                    style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <source src="../video/streetfood.mp4" type="video/mp4" />
+                    <!-- Optional extra format for broader compatibility:
+      <source src="../assets/video/streetfood.webm" type="video/webm" />
+      -->
+                    
+                </video>
+            </div>
+        </section>
+
+
+
+        <!-- Polls mount -->
+        <section id="state-polls" class="state-polls"></section>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/FAQ.js"></script>
+</body>
+
+</html>
