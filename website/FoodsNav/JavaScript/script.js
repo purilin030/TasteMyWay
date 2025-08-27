@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const urlId = food.urlId || food.id || 'defaultid';
 
             // Dynamic link using current origin
-            const linkUrl = `/FoodDetail/html/food.html?id=${encodeURIComponent(urlId)}`;
+            const linkUrl = `${window.location.origin}/TasteMyWay.github.io/website/FoodDetail/html/food.html?id=${encodeURIComponent(urlId)}`;
             const foodCard = document.createElement('div');
             foodCard.classList.add('food-card');
             foodCard.innerHTML = `
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       foodResultsContainer.innerHTML = '<p>Failed to load food data.</p>';
     });
 });
+
 
 
 
