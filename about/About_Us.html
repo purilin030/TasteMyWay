@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>About Us</title>
+  <link rel="stylesheet" href="../about/css/About_Us_Format.css" />
+  <link rel="stylesheet" href="../about/css/Cookie.css">
+  <link rel="stylesheet" href="../about/css/footer.css">
+  <link rel="stylesheet" href="../mainpage/css/logo.css">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="header-left">
+        <div class="header-logo">
+          <img src="../../mainpage/images/logo.png" alt="TasteMyWay Logo">
+          <h2><span>TasteMyWay</span></h2>
+        </div>
+      </div>
+
+      <div class="header-right">
+
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" type="button"
+          aria-label="Toggle navigation">
+          ☰
+        </button>
+
+        <nav aria-label="Primary">
+          <ul id="primary-nav" class="nav">
+            <li><a href="../mainpage/html/index.html">Main</a></li>
+            <li><a href="../FoodsNav/html/foodnav.html">Food navigation</a></li>
+            <li><a href="About_Us.html" aria-current="page">About us</a></li>
+          </ul>
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
+      </div>
+    </header>
+
+
+
+    <section class="about-block">
+      <div class="about-block-image">
+        <div class="iframe-container">
+          <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            src="https://maps.google.com/maps?width=720&height=600&hl=en&q=Malaysia+(@TasteMyWay%20)&t=h&z=6&ie=UTF8&iwloc=B&output=embed"></iframe>
+        </div>
+      </div>
+
+      <div class="content">
+        <p>
+          <strong style="font-size: 2rem;">Welcome to TasteMyWay.</strong>
+          <br>The ultimate guide for international visitors ready to embark on a culinary adventure through Malaysia.
+          This is your passport to a world of sizzling woks, fragrant spices, and bold flavors waiting to be discovered
+          on every street corner. Our mission is to help you go beyond the typical tourist path and truly immerse
+          yourself in the heart of Malaysian culture—one delicious bite at a time.</br>
+        </p>
+
+        <p>
+          <strong style="font-size: 2rem;">Join the Adventure.</strong>
+          <br>
+          Travel, explore, eat, and drink—let the vibrant tapestry of Malaysia’s local food scene guide your way. We
+          invite you to enjoy every moment, record every flavor, and help us build the definitive guide to the country's
+          incredible street food.
+          </br>
+        </p>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+
+        <!-- About Section -->
+        <div class="footer-column about">
+          <h3>About TasteMyWay</h3>
+          <p>
+            TasteMyWay is your gateway to exploring Malaysia's diverse culture, cuisine, and destinations.
+            We share stories, travel tips, and local experiences to make your journey unforgettable.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="https://www.google.com/maps">Google Maps</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-column social-links">
+          <h3>Follow Us</h3>
+          <a href="https://facebook.com" target="_blank"><img src="../mainpage/images/facebook.png">Facebook</a>
+          <a href="https://instagram.com" target="_blank"><img src="../mainpage/images/instagram.png">Instagram</a>
+          <a href="https://twitter.com" target="_blank"><img src="../mainpage/images/twitter.png">Twitter</a>
+          <a href="https://youtube.com" target="_blank"><img src="../mainpage/images/youtube.png">Youtube</a>
+
+          <!-- Back to Top 箭头图标 -->
+          <a href="#" id="backToTopBtn" class="back-to-top" title="Back to Top"><img src="../mainpage/images/arrow.png">
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 TasteMyWay.com | All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- 新增：Cookie 同意条（cookies） -->
+    <div id="cookieBanner" class="cookie-banner" hidden>
+      <span>This site uses cookies to improve your experience.</span>
+      <button id="acceptCookies" type="button">Accept</button>
+    </div>
+
+    <!-- 最小JS：主题(localStorage) + Cookie -->
+    <script>
+      (function () {
+        // === Theme ===
+        const key = "tmw-theme";
+        const apply = t => document.body.setAttribute("data-theme", t);
+        const saved = localStorage.getItem(key) || "light";
+        apply(saved);
+
+        document.addEventListener("click", (e) => {
+          if (e.target && e.target.id === "themeToggle") {
+            const next = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            apply(next);
+            localStorage.setItem(key, next);
+            e.target.textContent = next === "dark" ? "☀️ Light" : "🌙 Dark";
+          }
+        });
+
+        // === Cookie banner (inject if missing) ===
+        const hasConsent = document.cookie.split("; ").some(s => s.startsWith("tmw_consent="));
+        if (!hasConsent) {
+          let banner = document.getElementById("cookieBanner");
+          if (!banner) {
+            banner = document.createElement("div");
+            banner.id = "cookieBanner";
+            banner.className = "cookie-banner";
+            banner.innerHTML = `
+        <span>This site uses cookies to improve your experience.</span>
+        <button id="acceptCookies" type="button">Accept</button>
+      `;
+            document.body.appendChild(banner);
+          }
+          banner.hidden = false;
+          banner.querySelector("#acceptCookies").addEventListener("click", () => {
+            const d = new Date(); d.setFullYear(d.getFullYear() + 1);
+            document.cookie = "tmw_consent=1; path=/; expires=" + d.toUTCString();
+            banner.hidden = true;
+          });
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        const btn = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('primary-nav');
+        if (btn && nav) {
+          btn.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.style.overflow = open ? 'hidden' : '';
+          });
+        }
+      })();
+    </script>
+
+    <script src="../javascript/topbutton.js"></script>
+</body>
+
+</html>
