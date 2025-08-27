@@ -1,0 +1,397 @@
+/* ======== Theme & Reset ======== */
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #0b1220;
+  --muted: #64748b;
+  --line: #e6e8ee;
+  --brand: #2663ff;
+  --brand-weak: #7aa2ff;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(15, 23, 42, .06);
+  --gap: 18px;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: url('../images/pexels-souvenirpixels-1571442.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ======== Header (通用) ======== */
+header.Navigate-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #0b1220;
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+header .Logo {
+  display: inline-block;
+  padding: 16px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800
+}
+
+header .nav {
+  float: right;
+  padding: 12px 16px
+}
+
+header .nav a {
+  color: #b6c2ff;
+  text-decoration: none;
+  margin-left: 8px;
+  padding: 8px 10px;
+  border-radius: 8px
+}
+
+header .nav a:hover,
+header .nav a.active {
+  background: rgba(255, 255, 255, .08);
+  color: #fff
+}
+
+/* ======== Page Split (Main + Sidebar) ======== */
+.page {
+  max-width: 1700px;
+  margin: auto;
+  margin-right: 15rem;
+  padding: 1rem;
+  display: fixed;
+
+}
+
+.main-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* .sidebar {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  height: max-content;
+} */
+
+/* ======== Form basics ======== */
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px
+}
+
+input[type="text"],
+input[type="date"],
+input[type="search"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  transition: box-shadow .15s, border-color .15s;
+}
+
+textarea {
+  min-height: 160px;
+  resize: vertical
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--brand-weak);
+  box-shadow: 0 0 0 3px rgba(122, 162, 255, .25)
+}
+
+/* ======== Top row (Title + Date) ======== */
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: var(--gap);
+  margin-bottom: 8px;
+}
+
+/* ======== Paragraph rows ======== */
+.para-list {
+  display: grid;
+  gap: var(--gap)
+}
+
+.para-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.para-row.active {
+  border-color: var(--brand-weak);
+  box-shadow: 0 0 0 3px rgba(122, 162, 255, .15)
+}
+
+.map-col .loc-input {
+  margin-bottom: 10px
+}
+
+.map {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border: 0;
+  border-radius: 10px;
+  background: #e9eef6
+}
+
+.text-col label {
+  margin: 0 0 8px
+}
+
+/* Food ID 行 */
+.foodid-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.foodid-row .food-id {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  outline: none;
+}
+
+.foodid-row small {
+  grid-column: 2/3;
+  color: var(--muted)
+}
+
+.foodid-row small.ok {
+  color: #16a34a
+}
+
+.foodid-row small.err {
+  color: #dc2626
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 14px
+}
+
+/* Buttons */
+.btn {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  bottom: 2%;
+  left: 1rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: filter .15s, transform .06s, border-color .15s, background .15s, color .15s;
+}
+
+.btn.primary {
+  background: var(--brand);
+  color: #fff
+}
+
+.btn.primary:hover {
+  filter: brightness(1.05)
+}
+
+.btn.outline {
+  background: #fff;
+  color: var(--brand);
+  border-color: #cbd5ff
+}
+
+.btn.outline:hover {
+  background: #f6f8ff
+}
+
+.btn:active {
+  transform: translateY(1px)
+}
+
+/* ======== Sidebar Food List ======== */
+/* .side-title {
+  margin: 0 0 8px
+}
+
+#foodSearch {
+  margin-bottom: 10px
+}
+
+#foodItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px
+}
+
+#foodItems li {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 4px;
+}
+
+#foodItems .id {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace
+}
+
+#foodItems .name {
+  font-weight: 800
+}
+
+#foodItems .place {
+  color: #475569;
+  font-size: .95rem
+} */
+
+/* ======== Responsive ======== */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr
+  }
+
+  .para-row {
+    grid-template-columns: 1fr
+  }
+
+  .top-row {
+    grid-template-columns: 1fr
+  }
+}
+
+@media (max-width: 600px) {
+  .btn {
+    width: 100%
+  }
+}
+
+.review-struct {
+  margin-top: 10px
+}
+
+.review-struct .rs-grid {
+  display: grid;
+  grid-template-columns: auto 140px auto 140px;
+  gap: 8px 10px;
+  align-items: center
+}
+
+.review-struct input[type="number"] {
+  width: 100%
+}
+
+.review-struct select {
+  height: 32px
+}
+
+.food-id-hint {
+  color: var(--muted)
+}
+
+.food-id-hint.ok {
+  color: #16a34a
+}
+
+.food-id-hint.err {
+  color: #dc2626
+}
+
+.top-actions {
+  margin-bottom: 12px;
+}
+
+
+/* Layout for blog-write with sidebar */
+.write-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.write-layout .sidebar {
+  background: #f7f9fc;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 400px;
+
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.write-layout .content {
+  flex: 1;
+}
+
+
+/* Hover effect for sidebar buttons */
+.write-layout .sidebar .btn {
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.write-layout .sidebar .btn:hover {
+  background: var(--brand, #4f46e5);
+  color: #fff;
+  transform: translateX(2px);
+}
+
+
+/* Fixed sidebar */
+.write-layout .sidebar {
+  position: fixed;
+  top: 100px;
+  /* distance from top navbar */
+  left: 20px;
+  height: calc(100% - 120px);
+}
+
+/* Adjust content to avoid overlapping with fixed sidebar */
+.write-layout .content {
+  margin-left: 220px;
+}
+
+.backToListBtn {
+  right: 1rem;
+}

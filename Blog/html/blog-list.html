@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog List</title>
+  <link rel="stylesheet" href="/Blog/css/blog-list.css">
+  <link rel="stylesheet" href="../../mainpage/css/footer.css">
+</head>
+
+<body>
+  <header class="Navigate-bar">
+    <a class="Logo" href="#">TasteMyWay</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../mainpage/html/index.html">Main</a>
+      <a href="../../FoodsNav/html/foodnav.html">Food navigation</a>
+      <a href="blog-list.html" aria-current="page">Blog </a>
+      <a href="../../about/About_Us.html">About us</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- Search Section (match foodnav.html) -->
+      <div class="search-section">
+        <h2>Find Your Posts</h2>
+        <input type="text" id="searchInput" class="search-input" placeholder="e.g., Travel, Penang trip notes">
+        <!-- <button id="search-btn" class="search-button">Search</button> -->
+
+        <div class="actions" style="margin-top: 0.75rem;">
+          <a class="btn primary" href="/Blog/html/blog-write.html">New Post</a>
+        </div>
+      </div>
+
+
+      <div id="list" class="list"></div>
+
+      <template id="cardTpl">
+        <article class="card">
+          <a class="card-link">
+            <h3 class="card-title"></h3>
+            <div class="meta"></div>
+            <p class="excerpt"></p>
+          </a>
+          <div class="card-actions">
+            <button class="btn ghost delete-btn">Delete</button>
+          </div>
+        </article>
+      </template>
+
+      <p id="empty" class="empty" hidden>No posts yet. Click “New Post” to create one.</p>
+  </main>
+  <!-- <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-column about">
+        <h3>About TasteMyWay</h3>
+        <p>
+          TasteMyWay is your gateway to exploring Malaysia's diverse culture, cuisine, and destinations.
+          We share stories, travel tips, and local experiences to make your journey unforgettable.
+        </p>
+      </div>
+      <div class="footer-column quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../mainpage.html">Main Page</a></li>
+          <li><a href="../../FoodsNav/html/foodnav.html">Food Navigation</a></li>
+          <li><a href="../../FoodsNav/html/favorites.html">Favorites</a></li>
+        </ul>
+      </div>
+      <div class="footer-column social-links">
+        <h3>Follow Us</h3>
+        <a href="https://facebook.com" target="_blank"><img src="../image/facebook.png" alt="Facebook">Facebook</a>
+        <a href="https://instagram.com" target="_blank"><img src="../image/instagram.png" alt="Instagram">Instagram</a>
+        <a href="https://twitter.com" target="_blank"><img src="../image/twitter.png" alt="Twitter">Twitter</a>
+        <a href="https://youtube.com" target="_blank"><img src="../image/youtube.png" alt="Youtube">Youtube</a>
+
+        <a href="#" id="backToTopBtn" class="back-to-top" title="Back to Top"><img src="../image/arrow.png"
+            alt="Back to Top">
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TasteMyWay.com | All rights reserved.</p>
+    </div>
+  </footer> -->
+  <script src="/Blog/js/blog-list.js"></script>
+</body>
+
+</html>

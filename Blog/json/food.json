@@ -1,0 +1,17 @@
+[
+  {
+    "id": "food-001",
+    "name": "Chicken Rice",
+    "place": "Restoran Tauge Ayam, Ipoh",
+    "review_summary": "Tender poached chicken with aromatic rice; clean broth.",
+    "origin": { "type": "post", "post_id": "post-169...", "para_index": 0 },
+    "lat": 4.596, "lng": 101.09
+  },
+  {
+    "id": "food-002",
+    "name": "Satay",
+    "place": "Che Mat sate",
+    "review_summary": "Rich peanut sauce; skewers slightly sweet, juicy.",
+    "origin": { "type": "post", "post_id": "post-169...", "para_index": 1 }
+  }
+]
