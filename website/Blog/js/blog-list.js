@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       exc.textContent   = excerptFrom(post);
 
-      link.href = `/Blog/html/blog-view.html?id=${encodeURIComponent(post.id)}`;
+      link.href = `../html/blog-view.html?id=${encodeURIComponent(post.id)}`;
 
       del.addEventListener("click", (e) => {
         e.preventDefault();
@@ -98,4 +98,5 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("posts");
     render([], "");
   });
+
 });
