@@ -1,0 +1,30 @@
+/* 暗色主题（根据 body[data-theme="dark"] 切换） */
+body[data-theme="dark"]{
+  background:#0b1220;
+  color:#f9fafb;
+}
+body[data-theme="dark"] .nav a{ color:#f9fafb; }
+body[data-theme="dark"] .about-block,
+body[data-theme="dark"] .contact-block{
+  background:#1f2937;
+  color:#f9fafb;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+}
+body[data-theme="dark"] .about-block-image img{ border-color:#374151; }
+body[data-theme="dark"] .theme-toggle{
+  background:#111827; color:#f9fafb; border-color:#374151;
+}
+
+/* Cookie banner */
+.cookie-banner{
+  position: fixed;
+  left:0; right:0; bottom:0;
+  display:flex; gap:.75rem; justify-content:center; align-items:center;
+  padding:.8rem 1rem;
+  background:#111827; color:#f9fafb;
+  z-index: 9999;
+}
+.cookie-banner button{
+  border:none; border-radius:6px; padding:.4rem .8rem; cursor:pointer;
+}
+.cookie-banner[hidden] { display: none !important; }
