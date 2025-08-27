@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../css/contact_us.css" />
+    <link rel="stylesheet" href="../../mainpage/css/logo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <img src="../../mainpage/images/logo.png" alt="TasteMyWay Logo">
+            <h2><span>TasteMyWay</span>
+        </div>
+        <nav class="site-nav">
+            <a href="../../mainpage.html">Main</a>
+            <a href="../../FoodsNav/html/foodnav.html">Food navigation</a>
+            <a href="../html/FaQ.html">FAQ</a>
+            <a href="../../About/About_Us.html">About us</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <h1>We’d love to hear from you</h1>
+            <p>Questions, feedback, or collaboration ideas—drop us a note. We typically respond within 1–2 business
+                days.</p>
+        </div>
+    </section>
+
+    <!-- Contact + Form (two columns) -->
+    <section class="contact">
+        <div class="container contact-grid">
+            <!-- Left column: details -->
+            <!-- Left column: video panel with street-food elements -->
+            <aside class="contact-media card">
+                <div class="video-wrap">
+
+                    <!-- Gradient overlay for legibility -->
+                    <div class="video-overlay"></div>
+
+                    <!-- Overlay content -->
+                    <div class="video-content">
+                        <video id="streetVideo" autoplay muted loop playsinline poster="../Short street video.jpg"
+                            preload="metadata">
+                            <!-- Use your short street video -->
+                            <source src="../video/Short street video.mp4" type="video/mp4" />
+                            <!-- Optional: keep a webm if you have one
+  <source src="assets/video/short-street.webm" type="video/webm" />
+  -->
+                            Your browser doesn’t support HTML5 video.
+                            <a href="../Short street video.mp4">Download the video</a>.
+                        </video>
+
+                    </div>
+            </aside>
+
+
+            <!-- Right column: form -->
+            <div class="contact-form card">
+                <div class="form-inner">
+                    <h2>Send us a message</h2>
+                    <form id="contactForm" novalidate>
+                        <div class="field">
+                            <label for="name">Name <span>*</span></label>
+                            <input id="name" name="name" type="text" autocomplete="name" required />
+                            <small class="error" data-for="name"></small>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email <span>*</span></label>
+                            <input id="email" name="email" type="email" autocomplete="email" required />
+                            <small class="error" data-for="email"></small>
+                        </div>
+
+                        <div class="field split">
+                            <div>
+                                <label for="phone">Phone</label>
+                                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+60 ..." />
+                                <small class="error" data-for="phone"></small>
+                            </div>
+                            <div>
+                                <label for="topic">Topic <span>*</span></label>
+                                <select id="topic" name="topic" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="support">Support</option>
+                                </select>
+                                <small class="error" data-for="topic"></small>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message <span>*</span></label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <small class="error" data-for="message"></small>
+                        </div>
+
+                        <div class="field checkbox">
+                            <label>
+                                <input type="checkbox" id="consent" required />
+                                I agree to be contacted about my inquiry.
+                            </label>
+                            <small class="error" data-for="consent"></small>
+                        </div>
+
+                        <button type="submit" class="btn">Send Message</button>
+                        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+    </section>
+
+    <!-- Blog Invite Section -->
+    <section class="blog-invite">
+        <div class="blog-invite-inner">
+            <h2>Want to Share Your Street Food Experience? 🍜</h2>
+            <p>Your story could inspire others. Write your own blog post and share it with our food community!</p>
+            <a href="../WriteBlog/write_blog.html" class="blog-button">✍️ Write a Blog</a>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> Malaysian Street Food. All rights reserved.</p>
+            <a class="back-to-top" href="#">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script src="../js/contact_us.js" defer></script>
+</body>
+
+</html>
