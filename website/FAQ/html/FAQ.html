@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FAQ - TasteMyWay</title>
+
+    <!-- Your existing styles -->
+    <link rel="stylesheet" href="../css/FAQ.css" />
+    <link rel="stylesheet" href="../../logo.css" />
+    <link rel="stylesheet" href="../../css/footer.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Quicksand:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-bar">
+        <div class="header-logo">
+            <img src="../../logo.png" alt="TasteMyWay Logo" />
+            <h2><span>TasteMyWay</span></h2>
+        </div>
+        <nav class="site-nav">
+            <a href="../../mainpage.html">Main</a>
+            <a href="../../FoodsNav/html/foodnav.html">Food navigation</a>
+            <a href="../../FoodDetail/html/food.html">Foods Details</a>
+            <a href="../../About/About_Us.html">About</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="faq-hero">
+            <h1>❓ Frequently Asked Questions</h1>
+            <p>Find answers to your questions about exploring Malaysia's culinary treasures</p>
+        </section>
+        <button class="btn btn-primary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#askModal">
+            Ask a question
+        </button>
+
+
+        <!-- Search -->
+        <!-- Search -->
+        <div class="search-container my-4">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text" id="faq-search-addon">🔍</span>
+                <input type="text" class="form-control" placeholder="Search for answers..." id="searchInput"
+                    aria-label="Search FAQs" aria-describedby="faq-search-addon" />
+            </div>
+        </div>
+
+
+        <!-- Tabs -->
+        <div class="category-tabs">
+            <button class="tab-button active" data-category="general">🏠 General</button>
+            <button class="tab-button" data-category="navigation">🧭 Navigation</button>
+            <button class="tab-button" data-category="food">🍜 Food</button>
+            <button class="tab-button" data-category="bloggers">✍️ Bloggers</button>
+        </div>
+
+        <!-- FAQ content (trimmed to essentials; keep/add as you like) -->
+        <div class="faq-content">
+            <div class="category-section active" id="general">
+                <div class="faq-item">
+                    <button class="faq-question">What is TasteMyWay? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>TasteMyWay is your guide to Malaysia’s food culture—discover dishes, places, and stories by
+                            state.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Do you sell food or take orders? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>No. We’re not a restaurant or delivery app; our goal is to help you discover great stalls and
+                            make informed choices.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Why only four states (Penang, Perak, Sarawak, Melaka) are selected?
+                        <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>This is Phase 1. We’re starting with four food‑rich states to ensure quality and accuracy.
+                            More states will be added based on user feedback and verification.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Is the site mobile-friendly? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Yes. All sections are responsive for phones, tablets, and desktops.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" id="navigation">
+                <div class="faq-item">
+                    <button class="faq-question">How can I check my saved food? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Your saved foods are stored in your browser (local storage). Open the Saved Foods page or tap
+                            the bookmark/heart icon. Use the same device and browser you used to save them.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How can I search the food according to state? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Use the States menu (e.g., Penang, Perak, Sarawak, Melaka). Pick a state to filter dishes and
+                            view recommended places in that region.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How can I know more about the food detail? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Click the food image or card in the navigation section. It opens the detail page with
+                            description, where‑to‑eat, and tips.</p>
+                    </div>
+                </div>
+
+
+                <div class="faq-item">
+                    <button class="faq-question">How do I navigate sections? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Use the top bar links and the “Explore Food Polls” button below.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" id="food">
+                <div class="faq-item">
+                    <button class="faq-question">Is the food halal? <span class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>We indicate halal or halal‑friendly when verifiable. Because stalls can change suppliers or
+                            preparation methods, please confirm at the stall before ordering.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">I have allergies—how do I check ingredients? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Ask the vendor directly and watch for common allergens like peanuts, shellfish, gluten,
+                            dairy, and eggs. If you’re unsure about cross‑contact, it’s safest to skip.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Are there vegetarian or vegan options? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Some dishes can be made vegetarian; vegan options are less common. Request no meat and
+                            confirm sauces (fish sauce, shrimp paste) and shared cookware practices.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How do you choose the recommended places? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>We look for consistent taste, freshness, hygiene, value, and community reputation. We also
+                            review user submissions and re‑check popular spots periodically.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Are locations and opening hours always accurate? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Stalls can move or change hours with little notice. Check map pins, recent reviews, or the
+                            vendor’s socials for the latest info.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do you list prices/nutrition values ? <span
+                            class="faq-toggle">▼</span></button>
+                    <div class="faq-answer">
+                        <p>No. Prices change frequently and nutrition varies by stall and portion. We focus on taste,
+                            typical ranges, and tips; for exact prices or nutrition, please ask at the stall.</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="category-section" id="bloggers">
+                    <div class="faq-item">
+                        <button class="faq-question">How can I contribute a blog post? <span
+                                class="faq-toggle">▼</span></button>
+                        <div class="faq-answer">
+                            <p>Use the Write a Blog prompt in the contact section. Include the stall name, location,
+                                dish, a short story (150–400 words), and 3–5 clear photos you own.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Can I edit or remove the blog? <span
+                                class="faq-toggle">▼</span></button>
+                        <div class="faq-answer">
+                            <p>Yes. Message us via the contact form with the post link and requested changes (or
+                                removal). We usually review within a few working days and will confirm once done.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="faq-item">
+                        <button class="faq-question">Can I contribute? <span class="faq-toggle">▼</span></button>
+                        <div class="faq-answer">
+                            <p>Yes—send us photos, tips, or stories via the Contact page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- No Results -->
+                <div class="no-results" id="noResults">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>No results found</h3>
+                    <p>Try different keywords or browse categories above</p>
+                </div>
+
+                <!-- Help Section -->
+                <section class="help-section">
+                    <h3>Still need help?</h3>
+                    <p>Our team is here to help.</p>
+                    <a href="contact_us.html" class="help-button">Contact Us</a>
+                </section>
+            </div>
+
+            <!-- CTA -->
+            <div class="faq-container">
+                <div class="cta-section">
+                    <h2>Ready to Make Your Voice Heard?</h2>
+                    <p>Vote in our state food battles below.</p>
+                    <a href="#state-polls" class="cta-button">Explore Food Polls Now →</a>
+                </div>
+            </div>
+
+            <!-- Street Food Video (between CTA and polls) -->
+            <section id="intro-video" class="intro-video" aria-label="Street food video">
+                <div class="video-frame">
+                    <video id="streetVideo" autoplay muted loop playsinline preload="metadata" alt="streetfood.mp4"
+                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <source src="../video/streetfood.mp4" type="video/mp4" />
+                        <!-- Optional extra format for broader compatibility:
+      <source src="../assets/video/streetfood.webm" type="video/webm" />
+      -->
+
+                    </video>
+                </div>
+            </section>
+
+
+
+            <!-- Polls mount -->
+            <section id="state-polls" class="state-polls"></section>
+        </div>
+
+
+        <!-- Ask a Question Modal -->
+        <div class="modal fade" id="askModal" tabindex="-1" aria-labelledby="askModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content border-0 shadow">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="askModalLabel">Ask a Question</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="askAlert" class="alert d-none" role="alert"></div>
+                        <form id="askForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="askName">Name <span
+                                            class="text-danger">*</span></label>
+                                    <input id="askName" type="text" class="form-control" required />
+                                    <div class="invalid-feedback">Please enter your name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="askEmail">Email <span
+                                            class="text-danger">*</span></label>
+                                    <input id="askEmail" type="email" class="form-control" required />
+                                    <div class="invalid-feedback">Please enter a valid email.</div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label" for="askMsg">Your question <span
+                                            class="text-danger">*</span></label>
+                                    <textarea id="askMsg" class="form-control" rows="5" required></textarea>
+                                    <div class="invalid-feedback">Please write your question.</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 d-flex justify-content-end gap-2">
+                                <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="askSubmit" type="submit" class="btn btn-primary">
+                                    <span class="btn-text">Send</span>
+                                    <span class="spinner-border spinner-border-sm ms-2 d-none" role="status"
+                                        aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About TasteMyWay</h3>
+                    <p>
+                        TasteMyWay is your gateway to exploring Malaysia's diverse culture, cuisine, and destinations.
+                        We share stories, travel tips, and local experiences to make your journey unforgettable.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#introduction">Home</a></li>
+                        <li><a href="#penang-section">Penang</a></li>
+                        <li><a href="#perak-section">Perak</a></li>
+                        <li><a href="#sarawak-section">Sarawak</a></li>
+                        <li><a href="#melaka-section">Melaka</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div class="footer-column social-links">
+                    <h3>Follow Us</h3>
+                    <a href="https://facebook.com" target="_blank"><img src="../../images/facebook.png">Facebook</a>
+                    <a href="https://instagram.com" target="_blank"><img src="../../images/instagram.png">Instagram</a>
+                    <a href="https://twitter.com" target="_blank"><img src="../../images/twitter.png">Twitter</a>
+                    <a href="https://youtube.com" target="_blank"><img src="../../images/youtube.png">Youtube</a>
+
+                    <!-- Back to Top 箭头图标 -->
+                    <a href="#" id="backToTopBtn" class="back-to-top" title="Back to Top"><img
+                            src="../../images/arrow.png">
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 TasteMyWay.com | All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- JS -->
+        <script src="../js/FAQ.js"></script>
+        <!-- jQuery then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
