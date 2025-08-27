@@ -1,0 +1,73 @@
+@keyframes slideInFromRight { /*Animation*/
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.another-section2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 10vh; /*vh = viewport*/
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    padding: 40px;
+    border-radius: 10px;
+
+}
+
+@media screen and (max-width: 768px) {
+    .another-section2 {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5vh;
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+
+#sarawak{ 
+    width: 550px;
+    height: 500px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px #F5600F;
+} 
+
+#sarawak:hover{
+    transform: scale(1.1);
+    cursor: url('../cursor.png'), auto;
+}
+
+.another-section2:hover #sarawak{
+    transform: scale(1.05);
+}
+
+.another-section2:hover .sarawak-content{
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.sarawak-content{
+    flex-basis:auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 4rem;
+    opacity: 0;
+    transform: translateX(70%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition-delay: 0.3s;
+    box-shadow: 0 0 20px 10px #D9E2FF;
+}
+
+.sarawak-image{
+    flex-basis: 200px;
+    display: flex;
+    justify-content: flex-end;
+}
