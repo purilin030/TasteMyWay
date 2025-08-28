@@ -21,7 +21,7 @@ body{
   background-color: black;
 }
 
-/* ======== Header (通用) ======== */
+/* ======== Header (General) ======== */
 header.Navigate-bar{
   position: sticky; top:0; z-index:10;
   background:#0b1220; color:#fff; box-shadow: 0 1px 0 rgba(255,255,255,.06);
@@ -59,7 +59,7 @@ footer{max-width:1100px; margin:40px auto; padding:0 20px; color:var(--muted)}
   .title{font-size:1.6rem}
 }
 
-/* 简评卡片 */
+/* Command Card */
 .review-card{
   margin-top:10px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;background:#f8fafc
 }
@@ -69,7 +69,7 @@ footer{max-width:1100px; margin:40px auto; padding:0 20px; color:var(--muted)}
   margin-top:6px;margin-right:6px;padding:2px 8px;border:1px solid #e2e8f0;border-radius:999px;
   font-size:.85rem;color:#475569;background:#fff
 }
-/* === FX 小挂件 === */
+/* === FX Small ornament === */
 .fx-widget{margin:12px 0 16px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;display:inline-block;font-size:.95rem}
 .fx-widget input,.fx-widget select,.fx-widget button{margin-right:6px}
 .fx-widget .fx-out{margin-left:6px;font-weight:600}
@@ -84,7 +84,7 @@ footer{max-width:1100px; margin:40px auto; padding:0 20px; color:var(--muted)}
 .sharebar a:hover, .sharebar button:hover{background:#f6f8ff}
 .sharebar iframe{vertical-align:middle}
 
-/* 简评卡片 */
+/* Command Card */
 .review-card{
   margin-top:10px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;background:#f8fafc
 }
@@ -95,7 +95,7 @@ footer{max-width:1100px; margin:40px auto; padding:0 20px; color:var(--muted)}
   font-size:.85rem;color:#475569;background:#fff
 }
 
-/* 汇率挂件 & 分享栏 */
+/* Currency converter & share blog */
 .fx-widget{margin:12px 0 16px;padding:10px;border:1px solid #e5e7eb;border-radius:8px;display:inline-block;font-size:.95rem}
 .fx-widget input,.fx-widget select,.fx-widget button{margin-right:6px}
 .fx-widget .fx-out{margin-left:6px;font-weight:600}
