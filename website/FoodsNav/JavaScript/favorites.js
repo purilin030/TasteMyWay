@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(foods => {
             // Filter the foods array to get only the liked items
             const favoriteFoods = foods.filter(food => likedFoodIds.includes(food.id));
-
+            //Display FoodCard that user liked
             if (favoriteFoods.length > 0) {
                 favoriteFoods.forEach(food => {
                     const foodCard = document.createElement('div');
@@ -36,4 +36,5 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('There was a problem fetching the food data:', error);
             favoritesListContainer.innerHTML = '<p class="not-found">Failed to load food data.</p>';
         });
+
 });
