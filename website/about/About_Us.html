@@ -15,25 +15,23 @@
 
 <body>
   <div class="wrapper">
-<header class="site-header">
-  <div class="header-logo">
-    <img src="../mainpage/images/logo.png" alt="TasteMyWay Logo">
-    <h2><span>TasteMyWay</span></h2>
-  </div>
+    <header class="site-header">
+      <div class="header-logo">
+        <img src="../mainpage/images/logo.png" alt="TasteMyWay Logo">
+        <h2><span>TasteMyWay</span></h2>
+      </div>
 
-  <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" type="button" aria-label="Toggle navigation">
-    ☰
-  </button>
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" type="button"
+        aria-label="Toggle navigation">
+        ☰
+      </button>
 
-  <nav class="site-nav" id="primary-nav" aria-label="Primary">
-    <a href="../mainpage/html/index.html">Main</a>
-    <a href="../FoodsNav/html/foodnav.html">Food navigation</a>
-    <a href="About_Us.html" aria-current="page">About us</a>
-  </nav>
-</header>
-
-
-
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <a href="../mainpage/html/index.html">Main</a>
+        <a href="../FoodsNav/html/foodnav.html">Food navigation</a>
+        <a href="About_Us.html" aria-current="page">About us</a>
+      </nav>
+    </header>
 
     <section class="about-block">
       <div class="about-block-image">
@@ -44,6 +42,7 @@
       </div>
 
       <div class="content">
+        <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
         <p>
           <strong style="font-size: 2rem;">Welcome to TasteMyWay.</strong>
           <br>The ultimate guide for international visitors ready to embark on a culinary adventure through Malaysia.
@@ -92,7 +91,7 @@
           <a href="https://twitter.com" target="_blank"><img src="../mainpage/images/twitter.png">Twitter</a>
           <a href="https://youtube.com" target="_blank"><img src="../mainpage/images/youtube.png">Youtube</a>
 
-          <!-- Back to Top 箭头图标 -->
+          <!-- Back to Top -->
           <a href="#" id="backToTopBtn" class="back-to-top" title="Back to Top"><img src="../mainpage/images/arrow.png">
           </a>
         </div>
@@ -104,13 +103,13 @@
       </div>
     </footer>
 
-    <!-- Cookie Confirm Bar（cookies） -->
+    <!-- 新增：Cookie 同意条（cookies） -->
     <div id="cookieBanner" class="cookie-banner" hidden>
       <span>This site uses cookies to improve your experience.</span>
       <button id="acceptCookies" type="button">Accept</button>
     </div>
 
-    <!-- The Smallest JS：Theme(localStorage) + Cookie -->
+    <!-- 最小JS：主题(localStorage) + Cookie -->
     <script>
       (function () {
         // === Theme ===
@@ -168,7 +167,4 @@
     <script src="../javascript/topbutton.js"></script>
 </body>
 
-
 </html>
-
-
