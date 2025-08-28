@@ -113,11 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // clear all
   clearAll?.addEventListener("click", () => {
-    ]
+    
     if (!confirm("Clear ALL posts? This cannot be undone.")) return;
     localStorage.removeItem("posts");
     render([], "");
   });
 
 });
+
 
