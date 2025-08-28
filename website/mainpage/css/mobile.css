@@ -13,12 +13,12 @@
     gap: 10px;
     padding: 12px 16px;
   }
-  .header-logo img { height: 46px; }                 /* 覆盖 logo.css 的高度 */
+  .header-logo img { height: 46px; }                 /* overwrite logo.css  */
   .header-logo h2, .top-bar h2 { font-size: 1.25rem; }
   #current-time {
     position: static; transform: none;
     font-size: 1.25rem; text-align: center;
-    order: 3;                                          /* 把时间放到最下面 */
+    order: 3;                                          /* put the time at the lowest layout*/
   }
   .site-nav {
     display: flex; gap: 8px; flex-wrap: wrap;
@@ -28,10 +28,10 @@
   .site-nav a { padding: 6px 10px; margin: 0; font-size: .95rem; }
 }
 @media (max-width: 360px) {
-  #current-time { display: none; }                     /* 超小屏隐藏时钟，避免挤压 */
+  #current-time { display: none; }                     /* minimize the clock when using mobile */
 }
 
-/* ====== Side Nav（改为顶端横向菜单） ====== */
+/* ====== Side Nav ====== */
 @media (max-width: 768px) {
   .side-nav {
     position: sticky; top: 0; left: 0;
@@ -40,7 +40,7 @@
     background: rgba(255,255,255,.9);
     z-index: 90;
   }
-  .side-nav:hover { width: 100%; }                     /* 覆盖原先 hover 展开行为 */
+  .side-nav:hover { width: 100%; }                    
   .side-nav ul {
     display: flex; gap: 8px; padding: 8px 10px; margin: 0;
     overflow-x: auto; -webkit-overflow-scrolling: touch;
@@ -49,19 +49,18 @@
     display: inline-flex; flex-direction: column; align-items: center;
     padding: 6px 8px; border-radius: 8px;
   }
-  .side-nav li a span { display: none; }               /* 只保留图标 */
+  .side-nav li a span { display: none; }             
   .side-nav li a img { width: 20px; height: 20px; margin: 0; }
 }
 
-/* ====== Hero（视频区） ====== */
+/* ====== Hero（Video） ====== */
 @media (max-width: 768px) {
-  .intro-hero { min-height: 60vh; }                    /* 避免手机 700px 过长 */
+  .intro-hero { min-height: 60vh; }                   
   .intro-headline { font-size: clamp(2rem, 8vw, 3rem); margin: 0 auto; }
   .intro-hero__video { object-position: center; }
 }
 
-/* ====== 每个州区块（Penang / Perak / Sarawak / Melaka） ====== */
-/* 统一把左右排布改为上下堆叠，并把图片改为自适应的正圆 */
+/* ====== （Penang / Perak / Sarawak / Melaka） ====== */
 @media (max-width: 1024px) {
   .another-section,
   .another-section1,
@@ -79,12 +78,11 @@
   .melaka-content {
     width: min(92vw, 720px);
     padding: 1.25rem !important;
-    opacity: 1 !important;               /* 直接显示文字，手机上不等 hover */
+    opacity: 1 !important;              
     transform: none !important;
     box-shadow: 0 0 12px 6px rgba(0,0,0,.06);
   }
 
-  /* 四张图统一圆形 + 自适应尺寸（覆盖原先 550x500 的固定宽高） */
   #penang, #perak, #sarawak, #melaka {
     width: min(80vw, 360px) !important;
     aspect-ratio: 1 / 1;
@@ -92,13 +90,11 @@
     border-radius: 50% !important;
   }
 
-  /* 居中图片容器 */
   .penang-image, .perak-image, .sarawak-image, .melaka-image {
     width: 100%; display: flex; justify-content: center !important;
   }
 }
 
-/* 针对更小屏（<=480px）：进一步收紧内边距与字体 */
 @media (max-width: 480px) {
   .penang-content,
   .perak-content,
@@ -122,17 +118,17 @@
   .site-footer { padding: 28px 16px 16px; }
   .footer-content {
     display: grid; gap: 16px;
-    grid-template-columns: 1fr;                        /* 一列堆叠 */
+    grid-template-columns: 1fr;                
   }
   .footer-column { min-width: 0; }
   .social-links a { font-size: .95rem; }
   .back-to-top { position: sticky; bottom: 12px; }
 }
 
-/* ====== 触控友好：关闭 hover 放大（避免误触位移） ====== */
 @media (hover: none) and (pointer: coarse) {
   .another-section:hover #penang,
   .another-section1:hover #perak,
   .another-section2:hover #sarawak,
   .another-section3:hover #melaka { transform: none !important; }
 }
+
