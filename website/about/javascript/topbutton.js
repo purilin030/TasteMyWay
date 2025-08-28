@@ -1,7 +1,8 @@
 document.getElementById("backToTopBtn").addEventListener("click", (e) => {
-    e.preventDefault(); // 阻止默认跳转
+    e.preventDefault(); 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 });
+
