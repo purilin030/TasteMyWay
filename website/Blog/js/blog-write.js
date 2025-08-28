@@ -1,44 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // —— 简易选择器
+  // Short query helper for readability
   const $ = (sel, root = document) => root.querySelector(sel);
 
-  // —— 基础节点
+  // ---- Page elements
   const titleInput = $("#titleInput");
   const dateInput = $("#dateInput");
   const paraList = $("#paragraphInputs");
   const addParaBtn = $("#addParaBtn");
   const submitBtn = $("#submitBtn");
 
-  // ====== food.json：加载 + 右侧列表 + datalist ======
+  // ===== Load food.json → build index + datalist + (optional) sidebar list =====
+  // Keeps a quick lookup of Food by id, e.g. foodIndex["food-001"] => {id,name,...}
   const foodListEl = document.getElementById("foodItems");
   const datalistEl = document.getElementById("foodIdOptions");
-  let foodIndex = {}; // { id -> {id,name,place,...} }
+  let foodIndex = {}; // { id -> {id,name,...} }
 
+   /**
+   * Fetch the master food list and render helpers (datalist / sidebar).
+   * Safe to call at startup; silently fails if the file isn’t found.
+   */
   async function loadFoods() {
     try {
       const res = await fetch("../../FoodDetail/json/food.json");
       const data = await res.json();
+      
+      // Build a dictionary: id -> item
       foodIndex = Object.fromEntries((data || []).map(f => [String(f.id), f]));
+      
+      // Populate <datalist> so typing a Food ID can autocomplete with the name
       if (datalistEl) {
         datalistEl.innerHTML = (data || [])
           .map(f => `<option value="${String(f.id)}">${f.name || ""}</option>`).join("");
       }
-      if (foodListEl) {
-        foodListEl.innerHTML = (data || [])
-          .map(f => `
-            <li>
-              <div class="id">${String(f.id)}</div>
-              <div class="name">${f.name || ""}</div>
-              <div class="place">${f.place || ""}</div>
-            </li>
-          `).join("");
-      }
-      // 初次加载后刷新每一行的 hint
+      // // (Optional) Sidebar list—if present in HTML, CANCELED
+      // if (foodListEl) {
+      //   foodListEl.innerHTML = (data || [])
+      //     .map(f => `
+      //       <li>
+      //         <div class="id">${String(f.id)}</div>
+      //         <div class="name">${f.name || ""}</div>
+      //         <div class="place">${f.place || ""}</div>
+      //       </li>
+      //     `).join("");
+      // }
+      
+      // After loading, refresh all Food ID hints in the form
       refreshAllFoodHints();
     } catch (e) {
       console.warn("Failed to load /Blog/json/food.json", e);
     }
   }
+  
+  /** Update every Food ID hint under each row (name or “not found”). */
   function refreshAllFoodHints() {
     document.querySelectorAll("#paragraphInputs .para-row").forEach(row => {
       const input = row.querySelector(".food-id");
@@ -46,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (input && hint) updateFoodHint(input, hint);
     });
   }
+  
+  /** Show a friendly hint under the Food ID field. */
   function updateFoodHint(input, hint) {
     const id = String((input.value || "").trim());
     if (!id) { hint.textContent = ""; hint.className = "food-id-hint"; return; }
@@ -53,14 +68,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (f) { hint.textContent = `${f.name || ""}${f.place ? " · " + f.place : ""}`; hint.className = "food-id-hint ok"; }
     else { hint.textContent = "ID not found in food.json"; hint.className = "food-id-hint err"; }
   }
+  // Kick off food list loading
   loadFoods();
 
-  // ------------------------------------------------------------
-  // 1) 工具：创建一行段落（含地图联动 & 结构化字段）
-  // ------------------------------------------------------------
+   // ---------------------------------------------------------------------------
+  // 1) Wiring a paragraph row: map binding + Food ID hint + label text
+  // ---------------------------------------------------------------------------
+
+   // Attach event listeners to a row that already exists in the DOM.
+   // Also updates its “Paragraph n” label.
+   // @param {HTMLElement} row - The .para-row element
+   // @param {number} index  - 1-based paragraph index for display
 
   function wireRow(row, index = 1) {
-    // 地图联动
+    // Location → live map preview
     const locInput = row.querySelector(".loc-input");
     const mapFrame = row.querySelector(".map");
     const updateMap = () => {
@@ -70,10 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     if (locInput) {
       locInput.addEventListener("input", updateMap);
-      updateMap(); // 初始有值的话立即渲染一次
+      updateMap(); // render once if it has a value
     }
 
-    // Food ID 提示
+    // Food ID → live hint
     const foodIdInput = row.querySelector(".food-id");
     const hint = row.querySelector(".food-id-hint");
     if (foodIdInput && hint) {
@@ -82,11 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
       onFoodIdChange();
     }
 
-    // 同步“Paragraph n”标签（可选）
+    // Paragraph label text
     const label = row.querySelector(".text-col > label");
     if (label) label.textContent = `Paragraph ${ index }:` ;
   }
 
+   // Create a brand-new paragraph row (HTML structure) and wire it up.
+   // @param {number} index - 1-based display index
+   // @returns {HTMLElement} the created .para-row
   function createRow(index) {
     const row = document.createElement("div");
     row.className = "para-row";
@@ -140,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // —— 地址输入 → 地图预览
+   // Map preview for this new row
     const locInput = row.querySelector(".loc-input");
     const mapFrame = row.querySelector(".map");
     const updateMap = () => {
@@ -150,33 +174,37 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     locInput.addEventListener("input", updateMap);
 
-    // —— Food ID 即时校验（依赖已加载的 foodIndex）
+    // Food ID hint for this new row
     const foodIdInput = row.querySelector(".food-id");
     const hint = row.querySelector(".food-id-hint");
     function onFoodIdChange() { updateFoodHint(foodIdInput, hint); }
     foodIdInput.addEventListener("input", onFoodIdChange);
-    // 初始触发一次
     onFoodIdChange();
 
+    // Finalize wiring & return
     wireRow(row, index);
     return row;
   }
 
-  // ------------------------------------------------------------
-  // 2) 初始化：至少一行
-  // ------------------------------------------------------------
+ // ---------------------------------------------------------------------------
+  // 2) Initialization: make sure we have at least 1 row and wire the first one
+  // ---------------------------------------------------------------------------
+  // The first .para-row exists in HTML; wire it now so typing updates the map.
+  
   document.querySelectorAll("#paragraphInputs .para-row")
     .forEach((r, i) => wireRow(r, i + 1));
 
+  // Safety: if no rows exist (HTML changed), create one.
   if (!paraList.querySelector(".para-row")) {
     paraList.appendChild(createRow(1));
   }
 
-  // ------------------------------------------------------------
-  // 3) 自动草稿（sessionStorage）
-  // ------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // 3) Draft autosave (sessionStorage)
+  // ---------------------------------------------------------------------------
   const DRAFT_KEY = "write_draft_v1";
 
+  /** Collects the entire form state; used by autosave & submit. */
   function collectForm() {
     return {
       title: titleInput?.value || "",
@@ -197,25 +225,32 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+  /** Save the draft to sessionStorage; called on input/change and beforeunload. */
   function saveDraft() {
     try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify(collectForm())); } catch { }
   }
 
+  /**
+   * Restore a previously saved draft:
+   * - Ensures the number of rows matches the draft
+   * - Restores inputs per row
+   * - Triggers a map refresh and Food ID hint refresh
+   */
   function restoreDraft() {
     let raw = null;
     try { raw = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || "null"); } catch { }
     if (!raw) return;
 
-    // 标题/日期
+    // Title / Date
     if (titleInput) titleInput.value = raw.title || "";
     if (dateInput && raw.date) dateInput.value = raw.date;
 
-    // 段落数量对齐
+    // Ensure row count
     const need = Math.max(1, (raw.rows || []).length);
     const cur = document.querySelectorAll("#paragraphInputs .para-row").length;
     for (let i = cur; i < need; i++) addParaBtn?.click();
 
-    // 逐行恢复（含地图刷新）
+    // Restore per-row values (including map URL)
     const rows = document.querySelectorAll("#paragraphInputs .para-row");
     (raw.rows || []).forEach((seg, i) => {
       const row = rows[i]; if (!row) return;
@@ -247,11 +282,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // 恢复后刷一遍 Food ID 提示
+    // Refresh Food ID hints after restore
     refreshAllFoodHints();
   }
 
-  // —— 绑定自动保存
+  // Bind autosave on any relevant input/change
   ["input", "change"].forEach(evt => {
     document.addEventListener(evt, (e) => {
       if (e.target.closest("#paragraphInputs") || e.target === titleInput || e.target === dateInput) {
@@ -261,12 +296,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   window.addEventListener("beforeunload", saveDraft);
 
-  // —— 现在恢复草稿（确保已存在 .para-row）
+  // Actually restore (after rows exist)
   restoreDraft();
 
-  // ------------------------------------------------------------
-  // 4) 按钮事件
-  // ------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // 4) Buttons: add paragraph + submit
+  // ---------------------------------------------------------------------------
+
+  // Add another paragraph row
   addParaBtn?.addEventListener("click", () => {
     const count = paraList.querySelectorAll(".para-row").length;
     paraList.appendChild(createRow(count + 1));
@@ -274,13 +311,14 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshAllFoodHints();
   });
 
+  // Build a post object and persist to localStorage, then open view page
   submitBtn?.addEventListener("click", () => {
     const id = "post-" + Date.now();
     const post = {
       id,
       title: titleInput?.value || "",
       date: dateInput?.value || "",
-      // 查看页会读取 segments 或 paragraphs，这里用 segments
+      // View page reads .segments (fallback .paragraphs for older data)
       segments: Array.from(paraList.querySelectorAll(".para-row")).map((row, idx) => {
         const location = row.querySelector(".loc-input")?.value || "";
         const raw_experience = row.querySelector(".para-text")?.value || "";
@@ -313,10 +351,11 @@ document.addEventListener("DOMContentLoaded", () => {
     posts.push(post);
     localStorage.setItem("posts", JSON.stringify(posts));
 
-    // 清理草稿并跳转
+    // Clear draft and move to the View page of the new post
     sessionStorage.removeItem(DRAFT_KEY);
     location.href = `blog-view.html?id=${encodeURIComponent(id)}`;
   });
 });
+
 
 
