@@ -1,4 +1,4 @@
-/* 收起状态 */
+
 .side-nav {
     position: fixed;
     top: 50%;
@@ -9,23 +9,20 @@
     border-radius: 0 10px 10px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 50px; /* 收起时只够放图标 */
+    width: 50px; 
     transition: width 0.3s ease;
 }
 
-/* 展开状态 */
 .side-nav:hover {
-    width: 200px; /* 展开后宽度 */
+    width: 200px; 
 }
 
-/* ul 样式 */
 .side-nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-/* 链接样式 */
 .side-nav li a {
     display: flex;
     align-items: center;
@@ -36,14 +33,13 @@
     border-radius: 5px;
 }
 
-/* 图标样式 */
+
 .side-nav li a i {
     font-size: 18px;
-    width: 30px; /* 图标占位 */
+    width: 30px;
     text-align: center;
 }
 
-/* 文字样式 */
 .side-nav li a span {
     margin-left: 10px;
     opacity: 0;
@@ -51,17 +47,14 @@
     transition: opacity 0.2s ease;
 }
 
-/* 展开时文字显示 */
 .side-nav:hover li a span {
     opacity: 1;
 }
 
-/* hover 高亮 */
 .side-nav li a:hover {
     background-color: #ddd;
 }
 
-/* 当前 active */
 .side-nav li a.active {
     background-color: #007bff;
     color: white;
@@ -73,3 +66,4 @@
     object-fit: contain;
     margin-right: 10px;
 }
+
