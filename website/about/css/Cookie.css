@@ -1,4 +1,4 @@
-/* 暗色主题（根据 body[data-theme="dark"] 切换） */
+/* Dark Theme */
 body[data-theme="dark"]{
   background:#0b1220;
   color:#f9fafb;
@@ -28,3 +28,4 @@ body[data-theme="dark"] .theme-toggle{
   border:none; border-radius:6px; padding:.4rem .8rem; cursor:pointer;
 }
 .cookie-banner[hidden] { display: none !important; }
+
