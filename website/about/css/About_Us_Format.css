@@ -17,7 +17,7 @@ h1 {
   text-align: left;
 }
 
-/* header/nav（新增） */
+/* header/nav */
 header {
   position: relative;
   text-align: right;
@@ -68,7 +68,7 @@ header {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1.5rem;  /* 导航和按钮间距 */
+  gap: 1.5rem;  
 }
 
 
@@ -221,6 +221,7 @@ body[data-theme="dark"] .theme-toggle {
 .logo {
     margin: 0;
 }
+
 
 
 
