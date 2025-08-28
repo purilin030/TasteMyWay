@@ -15,32 +15,23 @@
 
 <body>
   <div class="wrapper">
-    <header>
-      <div class="header-left">
-        <div class="header-logo">
-          <img src="images/logo.png" alt="TasteMyWay Logo">
-          <h2><span>TasteMyWay</span></h2>
-        </div>
-      </div>
+<header class="site-header">
+  <div class="header-logo">
+    <img src="../mainpage/images/logo.png" alt="TasteMyWay Logo">
+    <h2><span>TasteMyWay</span></h2>
+  </div>
 
-      <div class="header-right">
+  <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" type="button" aria-label="Toggle navigation">
+    ☰
+  </button>
 
-        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" type="button"
-          aria-label="Toggle navigation">
-          ☰
-        </button>
+  <nav class="site-nav" id="primary-nav" aria-label="Primary">
+    <a href="../mainpage/html/index.html">Main</a>
+    <a href="../FoodsNav/html/foodnav.html">Food navigation</a>
+    <a href="About_Us.html" aria-current="page">About us</a>
+  </nav>
+</header>
 
-        <nav aria-label="Primary">
-          <ul id="primary-nav" class="nav">
-            <li><a href="../mainpage/html/index.html">Main</a></li>
-            <li><a href="../FoodsNav/html/foodnav.html">Food navigation</a></li>
-            <li><a href="About_Us.html" aria-current="page">About us</a></li>
-          </ul>
-        </nav>
-
-        <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark</button>
-      </div>
-    </header>
 
 
 
@@ -179,4 +170,5 @@
 
 
 </html>
+
 
