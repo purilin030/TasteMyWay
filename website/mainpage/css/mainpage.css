@@ -258,3 +258,42 @@ a img {
         background: #111 url("images/intro-poster.jpg") center/cover no-repeat;
     }
 }
+
+
+.region-title {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  color:black;
+  margin: 0;
+  text-align: center;
+}
+
+.region-text {
+  flex: 3;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  padding: 1em 1.2em;
+  border-bottom: 4px solid transparent; 
+  border-image: linear-gradient(to right, #F9D2B9, #FF8E8A, #2B7FAA) 1;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* 小屏幕优化：改为上下布局 */
+@media (max-width: 768px) {
+  .region-block {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  .region-title {
+    margin-bottom: 0.5em;
+  }
+  .region-text {
+    border-left: none;
+    border-top: 4px solid #ff6600;
+  }
+}
+
