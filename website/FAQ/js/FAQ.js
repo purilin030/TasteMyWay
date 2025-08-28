@@ -66,6 +66,39 @@ document.addEventListener('click', (e) => {
   }
 });
 
+function searchFaq(ev) {
+  const q = (typeof ev === 'string' ? ev : ev.target.value).trim().toLowerCase();
+  if (!q) { resetSearch(); return; }
+
+  const tabs = document.querySelector('.category-tabs');
+  if (tabs) tabs.style.opacity = '0.3';
+
+  let totalMatches = 0;
+
+  categorySections.forEach(section => {
+    let sectionMatches = 0;
+
+    section.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question')?.innerText || '';
+      const answer   = item.querySelector('.faq-answer')?.innerText || '';
+      const match = (question + ' ' + answer).toLowerCase().includes(q);
+
+      item.style.display = match ? 'block' : 'none';
+      if (match) sectionMatches++;
+    });
+
+    // Show sections that have matches; hide the rest
+    section.style.display = sectionMatches ? 'block' : 'none';
+    totalMatches += sectionMatches;
+  });
+
+  if (noResults) noResults.classList.toggle('show', totalMatches === 0);
+}
+
+// Start filtering as the user types
+if (searchInput) searchInput.addEventListener('input', searchFaq);
+
+
 
 function resetSearch() {
   document.querySelectorAll('.faq-item').forEach(i => i.style.display = 'block');
