@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Dynamic link using current origin
             const linkUrl = `../../FoodDetail/html/food.html?id=${encodeURIComponent(urlId)}`;
-
+            //FoodCard Information Display
             const foodCard = document.createElement('div');
             foodCard.classList.add('food-card');
             foodCard.innerHTML = `
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const region = urlParams.get('region');
       if (region) {
         searchBox.value = region;
-        // 直接过滤并显示
+        // direatly filter and show
         const filteredFoods = foods.filter(food =>
           food.state.toLowerCase() === region.toLowerCase()
         );
@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       foodResultsContainer.innerHTML = '<p>Failed to load food data.</p>';
     });
 });
+
 
 
 
