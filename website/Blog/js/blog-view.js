@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const wrap = $("#share");
     if (!wrap) return;
     const u = encodeURIComponent(location.href);
-    const t = encodeURIComponent(window.post.title || "My Post");
+    const t = encodeURIComponent((window.post?.title || document.title || "My Post"));
     wrap.innerHTML = `
       <iframe src="https://www.facebook.com/plugins/share_button.php?href=${u}&layout=button_count&size=small&appId"
               width="120" height="20" style="border:none;overflow:hidden" scrolling="no"
