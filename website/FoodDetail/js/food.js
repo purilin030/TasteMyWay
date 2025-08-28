@@ -3,7 +3,6 @@
   const id = (qs("id") || "").toLowerCase();
 
   const img = document.getElementById("foodImg");
-  const ingre = document.getElementById("ingredientsImg");
   const nameEl = document.getElementById("foodName");
   const pillRow = document.getElementById("pillRow");
   const ingBox = document.getElementById("ingredients");
