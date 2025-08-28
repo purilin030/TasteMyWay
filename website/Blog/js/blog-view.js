@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== 基础工具 =====
+  // ===== Small utilities =====
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+  // Escape basic HTML entities before inserting user text into DOM
   const escapeHTML = (s) =>
     (s ?? "").toString()
       .replace(/&/g, "&amp;")
@@ -9,21 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  
+  // Normalize mode text (defaults to "user"),this one origin plan was prepare for adding AI function to summarize the blog into a review,then put it into Food Detail Review Section
   const safeMode = (seg) => (seg && seg.display_mode) ? seg.display_mode : "user";
 
-  // ===== 读取当前文章 =====
+  // ===== Load current post =====
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const posts = JSON.parse(localStorage.getItem("posts") || "[]");
   const post = id ? posts.find(p => p.id === id) : posts.at(-1);
   if (!post) { alert("No post found."); return; }
-  window.post = post;  // 给下面的函数用
+  window.post = post;
 
-  // ===== 标题 / 元信息 =====
+  // ===== Title & meta =====
   $("#title").textContent = post.title || "Untitled";
   $("#meta").textContent = post.date ? `Date: ${post.date}` : "";
 
-  // ===== 渲染段落（地图 + 正文 + 小字）=====
+  // ===== Render segments (map + text + a small meta line) =====
   const segs = post.segments || post.paragraphs || [];
   const paraWrap = $("#paragraph");
   paraWrap.innerHTML = "";
@@ -31,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const row = document.createElement("div");
     row.className = "entry";
 
-    // 地图
+    // Map iframe URL—only if we have a location
     let mapSrc = "";
     if (seg.location) {
       const q = encodeURIComponent(seg.location);
@@ -58,10 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
     paraWrap.appendChild(row);
   });
 
-  // ===== 简评卡片（只在卡片里包 .mr-amount，用于气泡提示）=====
+  // ===== Mini review card (rating/price/wait/recommend/tags) =====
+  //AI review change to manual input.
   function renderStructuredSummary(seg = {}) {
     const star = (n) => !n ? "" : "★".repeat(n) + "☆".repeat(5 - n);
-    // 这里返回 <span class="mr-amount" data-myr="...">RM xx.xx</span>
+    
+    // Wrap MYR amounts in <span class="mr-amount" data-myr="..."> for tooltips later
     const myr = (v) =>
       (typeof v === "number" && isFinite(v))
         ? `<span class="mr-amount" data-myr="${v.toFixed(2)}">RM ${v.toFixed(2)}</span>`
@@ -71,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const recoMap = { no: "Not recommend", ok: "Neutral", yes: "Recommend", strong: "Strongly recommend" };
     const recoTxt = recoMap[seg.reco] || "";
 
+    // First line (joined with vertical separators)
     const line1 = [
       seg.rating ? `Taste ${star(seg.rating)} (${seg.rating}/5)` : "",
       myr(seg.price_myr) ? `Price ${myr(seg.price_myr)}` : "",
@@ -78,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       recoTxt ? `Recommend:${recoTxt}` : ""
     ].filter(Boolean).join(" ｜ ");
 
+    // Tag pills
     const tags = Array.isArray(seg.tags) ? seg.tags : [];
     const tagsHtml = tags.map(t => `<span class="tag-badge">${escapeHTML(t)}</span>`).join("");
 
@@ -90,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // 把卡片插入到每个段落的文字列后
+  // Append the review card under each paragraph’s text column
   (function injectStructuredCards() {
     const container = $("#paragraph");
     const entries = $$(".entry", container);
@@ -102,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  // ===== jQuery 版汇率函数（供挂件与“卡片气泡”共用）=====
+  // ===== Currency helper (MYR -> others) with jQuery fetch + fallback =====
   async function getMYRRates() {
     const CKEY = "fx_rates_myr";
     const cached = sessionStorage.getItem(CKEY);
@@ -113,17 +121,23 @@ document.addEventListener("DOMContentLoaded", () => {
       if (r && r.rates) { sessionStorage.setItem(CKEY, JSON.stringify(r.rates)); return r.rates; }
       throw new Error("bad");
     } catch {
+      // Fallback provider
       const r2 = await window.jQuery.getJSON("https://api.frankfurter.app/latest?from=MYR");
       if (r2 && r2.rates) { sessionStorage.setItem(CKEY, JSON.stringify(r2.rates)); return r2.rates; }
       throw new Error("bad2");
     }
   }
+  
+  // Small cookie helpers for remembering the last selected currency
   const readCookie = (name) => {
     const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
     return m ? decodeURIComponent(m[1]) : "";
   };
 
-  // ===== 只给“卡片里的Price”加气泡（正文不处理）=====
+  /**
+   * Update title tooltips on all amounts inside review cards.
+   * (We don’t rewrite the text; we only set title="xx USD" so hover shows conversion.)
+   */
   async function updateCardPriceTooltips() {
     const cur = readCookie("fx_currency") || "USD";
     let rates = null;
@@ -135,14 +149,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 初次更新卡片气泡
+   // Run once initially
   updateCardPriceTooltips();
 
-  // ===== 汇率挂件（MYR -> 其它）=====
+  // ===== FX widget (Amount MYR → selected currency) =====
   (function mountFxWidget() {
     const box = $("#fx-widget");
     if (!box) return;
 
+    // Pre-fill with first available MYR price if any
     const firstPrice = (segs.find(s => typeof s?.price_myr === "number") || {})?.price_myr;
 
     box.innerHTML = `
@@ -157,16 +172,17 @@ document.addEventListener("DOMContentLoaded", () => {
       <span class="fx-out" id="fx-out"></span>
     `;
 
+    // Cookie writer: remember last chosen currency for 365 days
     const writeCookie = (name, value, days) => {
       const d = new Date(); d.setTime(d.getTime() + days * 864e5);
       document.cookie = `${name}=${encodeURIComponent(value)}; expires=${d.toUTCString()}; path=/`;
     };
 
-    // 恢复上次选择
+    // Restore previously chosen currency if any
     const saved = readCookie("fx_currency");
     if (saved) $("#fx-currency", box).value = saved;
 
-    // 点击Convert
+   // Convert button: fetch rates and print the result
     $("#fx-convert", box).addEventListener("click", async () => {
       const amt = parseFloat($("#fx-amount", box).value || "0");
       const cur = $("#fx-currency", box).value;
@@ -176,18 +192,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!rates || !rates[cur]) throw new Error("no rate");
         $("#fx-out", box).textContent = (amt * rates[cur]).toFixed(2) + " " + cur;
         writeCookie("fx_currency", cur, 365);
-        // 目标币种变了 -> 同步更新卡片气泡
+        //  Also refresh tooltips since target currency changed
         updateCardPriceTooltips();
       } catch {
-        $("#fx-out", box).textContent = "Convert失败，请稍后再试";
+        $("#fx-out", box).textContent = "Convert fail，please try again later";
       }
     });
 
-    // 仅切换下拉不点按钮时，也更新卡片气泡
+    // If user changes the dropdown without clicking convert, still refresh tooltips
     $("#fx-currency", box).addEventListener("change", updateCardPriceTooltips);
   })();
 
-  // ===== 分享栏（Facebook / X / WhatsApp / Copy）=====
+  // ===== Share bar (FB / X / WhatsApp / Copy) =====
   (function mountShareBar() {
     const wrap = $("#share");
     if (!wrap) return;
