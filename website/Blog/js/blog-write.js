@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
           id: `para-${idx + 1}`,
           location,
           display_mode,
-          text: raw_experience,   // 与旧字段保持兼容
+          text: raw_experience,  
           raw_experience,
           food_id,
           rating, price_myr, wait, reco, tags
@@ -356,6 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
     location.href = `blog-view.html?id=${encodeURIComponent(id)}`;
   });
 });
+
 
 
 
